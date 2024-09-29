@@ -21,7 +21,7 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res, next) => {
   try {
-    res.render("index");
+    res.render("index", { title: "Todo List" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -29,7 +29,7 @@ app.get("/", (req, res, next) => {
 
 app.get("/add-todo", (req, res, next) => {
   try {
-    res.render("newTodo");
+    res.render("newTodo", { title: "Add Todo" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -37,7 +37,7 @@ app.get("/add-todo", (req, res, next) => {
 
 app.get("/update-todo", (req, res, next) => {
   try {
-    res.render("updateTodo");
+    res.render("updateTodo", { title: "Edit Todo" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -45,7 +45,7 @@ app.get("/update-todo", (req, res, next) => {
 
 app.get("/delete-todo", (req, res, next) => {
   try {
-    res.render("deleteTodo");
+    res.render("deleteTodo", { title: "Delete Todo" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

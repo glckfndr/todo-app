@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
@@ -16,8 +17,19 @@ mongoose
     console.log(error.message);
   });
 
+const toDoSchema = mongoose.Schema(
+  {
+    title: { type: String, require: true },
+    description: String,
+  },
+  { timestamps: true }
+);
+
+const ToDo = mongoose.model("todo", toDoSchema);
+
 const port = 8000;
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true })); // to parse the form data
 
 app.get("/", (req, res, next) => {
   try {

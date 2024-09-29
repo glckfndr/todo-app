@@ -32,9 +32,10 @@ const port = 8000;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true })); // to parse the form data
 
-app.get("/", (req, res, next) => {
+app.get("/", async (req, res, next) => {
   try {
-    res.render("index", { title: "Todo List" });
+    const todos = await ToDo.find({}).sort({ createdAt: -1 });
+    res.render("index", { title: "Todo List", todos });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

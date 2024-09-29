@@ -17,16 +17,19 @@
           <th>Updated at</th>
           <th>Action</th>
         </tr>
+        <% todos.forEach(todo => { %>
         <tr>
-          <td>Todo Title</td>
-          <td>Todo description</td>
-          <td>2024-09-01</td>
-          <td>2024-09-02</td>
+          <td><%= todo.title %></td>
+          <td><%= todo.description %></td>
+          <td><%= todo.createdAt %></td>
+          <td><%= todo.updatedAt %></td>
+
           <td>
             <a class="btn" href="/update-todo">Edit</a>
             <a class="btn" href="/delete-todo">Delete</a>
           </td>
         </tr>
+        <% }) %>
       </table>
     </div>
   </body>

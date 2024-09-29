@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const app = express();
+app.use(express.static(path.join(__dirname, "public")));
 
 const connectionURL = "mongodb://localhost:27017/todoDB)";
 
@@ -36,6 +38,14 @@ app.get("/add-todo", (req, res, next) => {
 app.get("/update-todo", (req, res, next) => {
   try {
     res.render("updateTodo");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get("/delete-todo", (req, res, next) => {
+  try {
+    res.render("deleteTodo");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

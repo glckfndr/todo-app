@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
 const { emit } = require("nodemon");
+const moment = require("moment");
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
@@ -35,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // to parse the form data
 app.get("/", async (req, res, next) => {
   try {
     const todos = await ToDo.find({}).sort({ createdAt: -1 });
+    res.locals.moment = moment;
     res.render("index", { title: "Todo List", todos });
   } catch (error) {
     res.status(500).json({ error: error.message });

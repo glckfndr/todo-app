@@ -21,8 +21,8 @@
         <tr>
           <td><%= todo.title %></td>
           <td><%= todo.description %></td>
-          <td><%= todo.createdAt %></td>
-          <td><%= todo.updatedAt %></td>
+          <td><%= moment(todo.createdAt).format("DD-MM-YYYY, HH:mm:ss") %></td>
+          <td><%= moment(todo.updatedAt).format("DD-MM-YYYY, HH:mm:ss") %></td>
 
           <td>
             <a class="btn" href="/update-todo">Edit</a>

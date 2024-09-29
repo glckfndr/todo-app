@@ -2,11 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
+const { emit } = require("nodemon");
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
-const connectionURL = "mongodb://localhost:27017/todoDB)";
+const connectionURL = "mongodb://localhost:27017/todoDB";
 
 mongoose
   .connect(connectionURL)
@@ -19,8 +20,8 @@ mongoose
 
 const toDoSchema = mongoose.Schema(
   {
-    title: { type: String, require: true },
-    description: String,
+    title: { type: String, required: true },
+    description: { type: String },
   },
   { timestamps: true }
 );
@@ -42,6 +43,25 @@ app.get("/", (req, res, next) => {
 app.get("/add-todo", (req, res, next) => {
   try {
     res.render("newTodo", { title: "Add Todo" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post("/add-todo", async (req, res, next) => {
+  try {
+    const { title, description } = req.body;
+
+    if (!title) {
+      return res.status(400).json({ message: "Title is required" });
+    }
+
+    const newTodo = new ToDo({
+      title,
+      description,
+    });
+    await newTodo.save();
+    res.redirect("/");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

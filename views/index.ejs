@@ -4,6 +4,9 @@
   <!-- Include the header partial -->
   <body>
     <div class="table-container">
+      <% if (messages.success) { %>
+      <div class="alert alert-success"><%= messages.success %></div>
+      <% } %>
       <h2 class="todo-title">Todo List</h2>
       <div>
         <a class="btn" href="/add-todo">Add todo</a>
@@ -26,7 +29,7 @@
 
           <td>
             <a class="btn" href="/update-todo">Edit</a>
-            <a class="btn" href="/delete-todo">Delete</a>
+            <a class="btn" href="/delete-todo?id=<%= todo._id%>">Delete</a>
           </td>
         </tr>
         <% }) %>

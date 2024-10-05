@@ -5,14 +5,15 @@ const todosController = require("../controllers/todosController");
 
 router.get("/", todosController.index);
 
-router.get("/add-todo", todosController.edit);
+router.get("/todos/add-todo", todosController.newPage);
 
-router.post("/add-todo", todosController.create);
+router.post("/todos/add-todo", todosController.create);
 
-router.get("/update-todo", todosController.update);
+router.get("/todos/update-todo", todosController.updatePage);
+router.post("/todos/update-todo/:id", todosController.updateToDo);
 
-router.get("/delete-todo", todosController.deletePage);
+router.get("/todos/delete-todo", todosController.deletePage);
 
-router.get("/confirm-delete", todosController.deleteToDo);
+router.get("/todos/confirm-delete", todosController.deleteToDo);
 
 module.exports = router;

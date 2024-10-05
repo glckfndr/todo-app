@@ -9,7 +9,7 @@
       <% } %>
       <h2 class="todo-title">Todo List</h2>
       <div>
-        <a class="btn" href="/add-todo">Add todo</a>
+        <a class="btn" href="/todos/add-todo">Add todo</a>
       </div>
       <br />
       <table>
@@ -28,8 +28,10 @@
           <td><%= moment(todo.updatedAt).format("DD-MM-YYYY, HH:mm:ss") %></td>
 
           <td>
-            <a class="btn" href="/update-todo">Edit</a>
-            <a class="btn" href="/delete-todo?id=<%= todo._id%>">Delete</a>
+            <a class="btn" href="/todos/update-todo?id=<%= todo._id%>">Edit</a>
+            <a class="btn" href="/todos/delete-todo?id=<%= todo._id%>"
+              >Delete</a
+            >
           </td>
         </tr>
         <% }) %>

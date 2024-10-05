@@ -3,25 +3,25 @@
   <%- include('partials/header') %> <!-- Include the header partial -->
   <body>
     <div class="table-container">
-      <h2 class="todo-title>">Add new Todo</h2>
+      <h2 class="todo-title>">Update Todo</h2>
       <div>
         <a class="btn" href="/">Back</a>
-        <form action="/add-todo" method="post">
-          <div class="new-todo">
+        <form action="update-todo/<%= id %>" method="post">
+          <div class="update-todo">
 
             <div class="form-group">
               <label for="title" class="text-light">Title</label>
               <br/>
-              <input type="text" name="title" value="" placeholder="Type Todo title here"/>
+              <input type="text" name="title" id="title" value="<%= title %>" placeholder="Type Todo title here"/>
             </div>
 
             <div class="form-group">
               <label for="description" class="text-light">Description</label>
               <br />
-              <textarea name="description" value="" placeholder="Type Todo description here"></textarea>
+              <textarea name="description" id="description" placeholder="Type Todo description here"><%= description %></textarea>
             </div>
             <div class="form-group">
-              <button class="btn" type="submit">Create</button>
+              <button class="btn" type="submit">Update</button>
             </div>
           </div>
         </form>

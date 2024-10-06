@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
 
-const connectionURL = "mongodb://localhost:27017/todoDB";
-
 const connectDB = () => {
   mongoose
-    .connect(connectionURL)
+    .connect(process.env.CONNECTION_URL)
     .then(() => {
       console.log("Connection to mongoDB is successful!");
     })

@@ -4,6 +4,8 @@ const session = require("express-session");
 const path = require("path");
 const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
+const dotenv = require("dotenv");
+dotenv.config();
 
 // init app
 const app = express();

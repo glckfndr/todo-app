@@ -1,30 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <%- include('partials/header') %> <!-- Include the header partial -->
-  <body>
-    <div class="table-container">
-      <h2 class="todo-title>">Add new Todo</h2>
-      <div>
-        <a class="btn" href="/">Back</a>
-        <form action="add-todo" method="post">
-          <div class="new-todo">
+<div class="table-container">
+  <h2 class="todo-title>">Add new Todo</h2>
+  <div>
+    <a class="btn" href="/">Back</a>
+    <form action="add-todo" method="post">
+      <div class="new-todo">
+        <div class="form-group">
+          <label for="title" class="text-light">Title</label>
+          <br />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value=""
+            placeholder="Type Todo title here"
+          />
+        </div>
 
-            <div class="form-group">
-              <label for="title" class="text-light">Title</label>
-              <br/>
-              <input type="text" name="title" id="title" value="" placeholder="Type Todo title here"/>
-            </div>
-
-            <div class="form-group">
-              <label for="description" class="text-light">Description</label>
-              <br />
-              <textarea name="description" id="description" value="" placeholder="Type Todo description here"></textarea>
-            </div>
-            <div class="form-group">
-              <button class="btn" type="submit">Create</button>
-            </div>
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="description" class="text-light">Description</label>
+          <br />
+          <textarea
+            name="description"
+            id="description"
+            value=""
+            placeholder="Type Todo description here"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn" type="submit">Create</button>
+        </div>
       </div>
-  </body>
-</html>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 const connectDB = require("../db/connectDB");
+
 const mongoose = connectDB();
+
 const toDoSchema = mongoose.Schema(
   {
     title: { type: String, required: true },

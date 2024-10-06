@@ -1,10 +1,13 @@
 const moment = require("moment");
+// add model to controller
 const ToDo = require("../models/todo");
 
 const index = async (req, res, next) => {
   try {
     const todos = await ToDo.find({}).sort({ createdAt: -1 });
+    // add moment to locals
     res.locals.moment = moment;
+    // render the index page with todos
     res.render("todos/index", {
       title: "Todo List",
       todos,
@@ -17,6 +20,7 @@ const index = async (req, res, next) => {
 
 const newPage = (req, res, next) => {
   try {
+    // render the newTodo page
     res.render("todos/newTodo", { title: "Add Todo" });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -30,7 +34,7 @@ const create = async (req, res, next) => {
     if (!title) {
       return res.status(400).json({ message: "Title is required" });
     }
-
+    // create a new todo
     const newTodo = new ToDo({
       title,
       description,
@@ -46,7 +50,7 @@ const updatePage = async (req, res, next) => {
   try {
     const { id } = req.query;
     const todo = await ToDo.findById(id);
-
+    // render the updateTodo page with the todo
     res.render("todos/updateTodo", {
       title: todo.title,
       description: todo.description,
@@ -78,6 +82,7 @@ const updateToDo = async (req, res, next) => {
 const deletePage = (req, res, next) => {
   try {
     const { id } = req.query;
+    // render the deleteTodo page with the todo id
     res.render("todos/deleteTodo", { title: "Delete Todo", id: id });
   } catch (error) {
     res.status(500).json({ error: error.message });

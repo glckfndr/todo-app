@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <%- include('partials/header') %> <!-- Include the header partial -->
-  <body>
-    <div class="table-container">
-      <h2 class="todo-title>">Update Todo</h2>
-      <div>
-        <a class="btn" href="/">Back</a>
-        <form action="update-todo/<%= id %>" method="post">
-          <div class="update-todo">
+<div class="table-container">
+  <h2 class="todo-title>">Update Todo</h2>
+  <div>
+    <a class="btn" href="/">Back</a>
+    <form action="update-todo/<%= id %>" method="post">
+      <div class="update-todo">
+        <div class="form-group">
+          <label for="title" class="text-light">Title</label>
+          <br />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value="<%= title %>"
+            placeholder="Type Todo title here"
+          />
+        </div>
 
-            <div class="form-group">
-              <label for="title" class="text-light">Title</label>
-              <br/>
-              <input type="text" name="title" id="title" value="<%= title %>" placeholder="Type Todo title here"/>
-            </div>
-
-            <div class="form-group">
-              <label for="description" class="text-light">Description</label>
-              <br />
-              <textarea name="description" id="description" placeholder="Type Todo description here"><%= description %></textarea>
-            </div>
-            <div class="form-group">
-              <button class="btn" type="submit">Update</button>
-            </div>
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="description" class="text-light">Description</label>
+          <br />
+          <textarea
+            name="description"
+            id="description"
+            placeholder="Type Todo description here"
+          >
+<%= description %></textarea
+          >
+        </div>
+        <div class="form-group">
+          <button class="btn" type="submit">Update</button>
+        </div>
       </div>
-  </body>
-</html>
+    </form>
+  </div>
+</div>
